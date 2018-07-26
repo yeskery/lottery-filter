@@ -8,7 +8,7 @@ import java.io.Serializable;
  * @author yeskery
  * @date 2018-07-26 12:23
  */
-public class Node implements Serializable {
+public final class Node implements Serializable {
 
 	public static final int MIN_STAR = 2;
 
