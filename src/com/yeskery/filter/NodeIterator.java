@@ -2,6 +2,12 @@ package com.yeskery.filter;
 
 import java.util.Iterator;
 
+/**
+ * 节点的迭代器
+ *
+ * @author yeskery
+ * @date 2018-07-26 12:23
+ */
 public class NodeIterator implements Iterable<Node>, Iterator<Node> {
 	
 	private int star;
@@ -11,7 +17,7 @@ public class NodeIterator implements Iterable<Node>, Iterator<Node> {
 	private int maxCount;
 	
 	public NodeIterator(int star) {
-		if (star < 2 || star > 5) {
+		if (star < Node.MIN_STAR || star > Node.MAX_STAR) {
 			throw new RuntimeException("star out of bounds");
 		}
 		this.star = star;

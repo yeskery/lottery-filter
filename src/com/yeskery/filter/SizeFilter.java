@@ -1,5 +1,11 @@
 package com.yeskery.filter;
 
+/**
+ * 大小过滤器
+ *
+ * @author yeskery
+ * @date 2018-07-26 12:23
+ */
 public class SizeFilter extends AbstractFilter {
 	
 	private static final String[] ALL_TWO_STAR_ARRAY = {"11", "10", "00", "01"};
@@ -20,10 +26,16 @@ public class SizeFilter extends AbstractFilter {
 	private String[] all;
 	
 	private String[] data;
-	
+
+	/**
+	 * 大小过滤器
+	 * @param star 星级
+	 * @param retain true 代表保留，false 代表删除
+	 * @param data 需要过滤的数据数组
+	 */
 	public SizeFilter(int star, boolean retain, String... data) {
 		super(data.length, retain);
-		if (star < 2 || star > 5) {
+		if (star < Node.MIN_STAR || star > Node.MAX_STAR) {
 			throw new RuntimeException("star out of bounds");
 		}
 		this.data = data;
@@ -32,6 +44,7 @@ public class SizeFilter extends AbstractFilter {
 			case 3: all = ALL_THREE_STAR_ARRAY;break;
 			case 4: all = ALL_FOUR_STAR_ARRAY;break;
 			case 5: all = ALL_FIVE_STAR_ARRAY;break;
+			default: throw new RuntimeException("star out of bounds");
 		}
 	}
 
@@ -50,5 +63,4 @@ public class SizeFilter extends AbstractFilter {
 		String[] reverse = getReverseArray(all, data);
 		return contain(reverse, node.getSize());
 	}
-
 }

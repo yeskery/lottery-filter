@@ -2,26 +2,63 @@ package com.yeskery.filter;
 
 import java.io.Serializable;
 
+/**
+ * 生成大底的号码，一个号码为一个 Node
+ *
+ * @author yeskery
+ * @date 2018-07-26 12:23
+ */
 public class Node implements Serializable {
-	
+
+	public static final int MIN_STAR = 2;
+
+	public static final int MAX_STAR = 5;
+
 	private static final long serialVersionUID = 4074657644524856098L;
-	
+	/**
+	 * 星级
+	 */
 	private int star;
-	
+
+
+	/**
+	 * 数据
+	 */
 	private int data;
-	
+
+	/**
+	 * 字符串形式的节点数据
+	 */
 	private String dataStr;
-	
+
+	/**
+	 * 字符数组形式的节点数据
+	 */
 	private char[] dataArray;
-	
+
+	/**
+	 * 跨度
+	 */
 	private int span;
-	
+
+	/**
+	 * 和值
+	 */
 	private int sum;
-	
+
+	/**
+	 * 合值
+	 */
 	private int remainder;
-	
+
+	/**
+	 * 大小 0代表小 1代表大
+	 */
 	private String size;
-	
+
+	/**
+	 * 单双 0代表双 1代表单
+	 */
 	private String dual;
 	
 	public Node(int star, int data) {
