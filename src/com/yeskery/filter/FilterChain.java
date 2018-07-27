@@ -62,10 +62,23 @@ public class FilterChain {
 	 * @return 过滤后的节点集合
 	 */
 	public List<Node> filter(Iterator<Node> iterator, int count) {
+		return getNoeListFromIterator(iterator, count);
+	}
+
+	/**
+	 * 使用星级节点迭代器方式进行过滤
+	 * @param iterator 星级节点迭代器
+	 * @return 过滤后的节点集合
+	 */
+	public List<Node> filter(Iterator<Node> iterator) {
+		return getNoeListFromIterator(iterator, -1);
+	}
+
+	private List<Node> getNoeListFromIterator(Iterator<Node> iterator, int count) {
 		LinkedList<Node> resultNodeList = new LinkedList<>();
 		if (filters.size() < 1) {
 			while (iterator.hasNext()) {
-				if (resultNodeList.size() >= count) {
+				if (count > 0 && resultNodeList.size() >= count) {
 					break;
 				}
 				resultNodeList.add(iterator.next());
@@ -73,7 +86,7 @@ public class FilterChain {
 			return resultNodeList;
 		}
 		while (iterator.hasNext()) {
-			if (resultNodeList.size() >= count) {
+			if (count > 0 && resultNodeList.size() >= count) {
 				break;
 			}
 			Node node = iterator.next();

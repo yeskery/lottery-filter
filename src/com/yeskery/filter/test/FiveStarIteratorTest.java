@@ -38,7 +38,7 @@ public class FiveStarIteratorTest {
 				"01111", "10000", "10001", "10010", "10011", "11010"));
 		filterChain.add(new DualFilter(5, true, "00001", "00010", "01000", "01001", "01111",
 				"10000", "10110", "10111"));
-		List<Node> resultNodeList = filterChain.filter(iterator, 10);
+		List<Node> resultNodeList = filterChain.filter(iterator);
 		long checkEnd = System.currentTimeMillis();
 		System.out.println("查询用时：" + (checkEnd - checkStart) + "ms, 共查询到：" + resultNodeList.size() + "个Node");
 		System.out.println("第一个Node: " + resultNodeList.get(0) + ", 最后一个Node: " + resultNodeList.get(resultNodeList.size() - 1));
