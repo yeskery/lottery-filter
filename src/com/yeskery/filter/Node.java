@@ -64,12 +64,7 @@ public final class Node implements Serializable {
 	public Node(int star, int data) {
 		this.star = star;
 		this.data = data;
-		dataStr = String.valueOf(data);
-		StringBuilder stringBuilder = new StringBuilder();
-		for (int i = 0;i < star - dataStr.length();i++) {
-			stringBuilder.append(0);
-		}
-		dataStr = stringBuilder.append(dataStr).toString();
+		dataStr = NumberFormatter.format(data, star);
 		dataArray = dataStr.toCharArray();
 		int[] tempDataArray = new int[dataArray.length];
 		for (int i = 0;i < dataArray.length;i++) {
